@@ -110,7 +110,10 @@ export function ComparisonSlider({
             if (!isDragging || !containerRef.current) return;
 
             const rect =
-                containerRef.current.parentElement.getBoundingClientRect();
+                containerRef.current.parentElement?.getBoundingClientRect();
+
+            if (!rect) return;
+
             const newPosition = ((e.clientX - rect.left) / rect.width) * 100;
 
             // Clamp between 0 and 100

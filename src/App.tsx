@@ -93,7 +93,7 @@ function App() {
                     )}
                     key={index}
                 >
-                    <div className="h-full flex flex-col justify-center p-4 gap-10">
+                    <div className="col-span-1 h-full flex flex-col justify-center p-4 gap-10">
                         <div className="space-y-2">
                             <div className="flex justify-between items-center mb-8">
                                 <h2 className="text-4xl font-medium font-rounded text-left">
@@ -182,7 +182,7 @@ function App() {
                             </Button>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-4 w-full rounded-lg overflow-hidden shadow-lg py-2">
+                    <div className="col-span-1 flex flex-col gap-4 w-full rounded-lg overflow-hidden shadow-lg py-2">
                         <ComparisonSlider
                             leftImage={
                                 theme === "dark"

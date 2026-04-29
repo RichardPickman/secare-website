@@ -93,7 +93,7 @@ function App() {
                     )}
                     key={index}
                 >
-                    <div className="h-full flex flex-col justify-center p-4 gap-10 shadow-lg rounded-lg">
+                    <div className="h-full flex flex-col justify-center p-4 gap-10">
                         <div className="space-y-2">
                             <div className="flex justify-between items-center mb-8">
                                 <h2 className="text-4xl font-medium font-rounded text-left">

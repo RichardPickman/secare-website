@@ -37,7 +37,7 @@ const groups = [
     {
         title: "Home",
         description:
-            "Sick of shorts, promotions and exploration blocks coming back, even though you hid them? Me too. This group of settings will help you to hide them for good.",
+            "Recent platform shifts emphasize discovery, often creating significant friction within the core viewing experience. The result? A feed that feels algorithmic rather than personal. The solution remains clear: restoring the stable, flatten youtube grid",
         images: {
             dark: [homeDark2, homeDark1],
             light: [homeLight1, homeLight2],
@@ -61,7 +61,7 @@ const groups = [
     {
         title: "Subscriptions",
         description:
-            "Bring back the old subscription feed, which working for you, not the algorithm.",
+            "The same thesis remains on subscription page too, and I know you've noticed it. Once, subscriptions button was leading you to your subscriptions video list, now it's relevant first, then Shorts, and then list of videos you've came to see.",
         images: {
             dark: [subscriptionsDark1, subscriptionsDark2],
             light: [subscriptionsLight1, subscriptionsLight2],

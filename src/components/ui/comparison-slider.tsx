@@ -138,7 +138,7 @@ export function ComparisonSlider({
     }, [isDragging]);
 
     return (
-        <div className="relative w-full aspect-video overflow-hidden">
+        <div className="relative w-full aspect-video overflow-hidden rounded-lg">
             <div
                 ref={containerRef}
                 className="relative w-full overflow-hidden bg-gray-100 select-none"

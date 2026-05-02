@@ -62,7 +62,7 @@ export function Carousel({ children, className }: CarouselProps) {
     return (
         <div
             ref={containerRef}
-            className={cn("relative w-full overflow-hidden py-20", className)}
+            className={cn("relative w-full overflow-hidden", className)}
         >
             <div
                 className="flex transition-transform duration-500 ease-out"

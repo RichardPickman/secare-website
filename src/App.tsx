@@ -1,5 +1,7 @@
 import chrome from "./assets/chrome.png";
 import firefox from "./assets/firefox.png";
+import logo from "./assets/hero.png";
+import { ThemeButton } from "./components/theme-button";
 
 import { Carousel } from "./components/ui/carousel";
 import { ComparisonSlider } from "./components/ui/comparison-slider";
@@ -7,13 +9,10 @@ import { groups } from "./lib/groups";
 
 const DownloadSlide = () => (
     <div className="h-full w-full flex flex-col items-center justify-center">
-        <div className="space-y-4">
-            <h2 className="font-semibold text-5xl text-foreground">Secare</h2>
-            <p className="text-muted-foreground text-xl">
-                Available for <span className="font-bold">Chrome</span> and{" "}
-                <span className="font-bold">Firefox</span>
-            </p>
-        </div>
+        <p className="text-muted-foreground text-xl">
+            Available for <span className="font-bold">Chrome</span> and{" "}
+            <span className="font-bold">Firefox</span>
+        </p>
         <div className="flex items-center justify-center gap-12 p-4">
             <a
                 href="https://chromewebstore.google.com/detail/secare/dpeeaknlhljbpnompbhhiinccemlhhed"
@@ -34,7 +33,15 @@ const DownloadSlide = () => (
 
 function App() {
     return (
-        <section className="container mx-auto h-full flex items-center">
+        <div className="container space-y-8 mx-auto h-full">
+            <header className="flex items-center justify-around py-4 px-6">
+                <img src={logo} className="w-8 h-8" />
+                <h1 className="font-semibold text-3xl text-foreground">
+                    Secare
+                </h1>
+                <ThemeButton />
+            </header>
+
             <Carousel>
                 {groups.map((group, index) => (
                     <div key={group.title} className="h-full space-y-4">
@@ -60,7 +67,7 @@ function App() {
 
                 <DownloadSlide />
             </Carousel>
-        </section>
+        </div>
     );
 }
 

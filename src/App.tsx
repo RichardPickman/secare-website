@@ -5,6 +5,7 @@ import { ThemeButton } from "./components/theme-button";
 
 import { Carousel } from "./components/ui/carousel";
 import { ComparisonSlider } from "./components/ui/comparison-slider";
+import { useTheme } from "./hooks/useTheme";
 import { groups } from "./lib/groups";
 
 const DownloadSlide = () => (
@@ -32,13 +33,15 @@ const DownloadSlide = () => (
 );
 
 function App() {
+    const { theme } = useTheme();
+
     return (
         <div className="container space-y-8 mx-auto h-full">
             <header className="flex items-center justify-around py-4 px-6">
                 <img src={logo} className="w-8 h-8" />
-                <h1 className="font-semibold text-3xl text-foreground">
+                {/* <h1 className="font-semibold text-3xl text-foreground">
                     Secare
-                </h1>
+                </h1> */}
                 <ThemeButton />
             </header>
 
@@ -58,8 +61,16 @@ function App() {
                             className="flex flex-col gap-4 p-4 w-full shadow-2xl rounded-lg"
                         >
                             <ComparisonSlider
-                                leftImage={group.images[0]}
-                                rightImage={group.images[1]}
+                                leftImage={
+                                    theme === "dark"
+                                        ? group.images.dark[0]
+                                        : group.images.light[0]
+                                }
+                                rightImage={
+                                    theme === "dark"
+                                        ? group.images.dark[1]
+                                        : group.images.light[1]
+                                }
                             />
                         </div>
                     </div>

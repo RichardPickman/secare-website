@@ -9,7 +9,7 @@ import watch2 from "../assets/screenshots/watch-light-2.png";
 
 export const groups = [
     {
-        title: "Home Page",
+        title: "Home",
         description:
             "Create a clean and focused YouTube homepage by disabling unwanted elements such as the header, Shorts, tags, and promotional sections. Secare allows you to remove visual clutter and recommendations that distract from the main feed, helping you browse more efficiently.",
         images: [home1, home2],
@@ -30,7 +30,7 @@ export const groups = [
         },
     },
     {
-        title: "Subscription Page",
+        title: "Subscriptions",
         description:
             "Simplify your Subscriptions feed by disabling relevant videos, Shorts, and other distracting elements. Have a better control over the page layout, so you can focus on the channels you actually follow.",
         images: [subscriptions1, subscriptions2],
@@ -46,7 +46,7 @@ export const groups = [
         },
     },
     {
-        title: "Watch Page",
+        title: "Watching",
         description:
             "Enhance your video watching experience by hiding the sidebar, description elements, comments and channel controls. Secare lets you remove distractions on the right side and below the player, allowing for a more immersive and focused viewing session.",
         images: [watch1, watch2],

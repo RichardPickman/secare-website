@@ -35,9 +35,9 @@ const DownloadSlide = () => (
 function App() {
     return (
         <section className="container mx-auto h-full flex items-center">
-            <Carousel className="shadow-2xl rounded-lg py-8">
+            <Carousel>
                 {groups.map((group, index) => (
-                    <div key={group.title} className="h-full">
+                    <div key={group.title} className="h-full space-y-4">
                         <div className="space-y-2">
                             <h2 className="font-semibold text-2xl text-foreground">
                                 {group.title}
@@ -48,7 +48,7 @@ function App() {
                         </div>
                         <div
                             key={index}
-                            className="flex flex-col gap-4 p-4 w-full"
+                            className="flex flex-col gap-4 p-4 w-full shadow-2xl rounded-lg"
                         >
                             <ComparisonSlider
                                 leftImage={group.images[0]}

@@ -1,3 +1,4 @@
+import { ChevronsLeftRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const SliderHandle = ({
@@ -8,7 +9,7 @@ const SliderHandle = ({
     handleMouseDown: () => void;
 }) => (
     <div
-        className="absolute top-0 h-full cursor-col-resize transition-colors group bg-background"
+        className="absolute top-0 h-full cursor-col-resize transition-colors group"
         style={{
             left: `${position}%`,
             transform: "translateX(-50%)",
@@ -18,13 +19,15 @@ const SliderHandle = ({
     >
         <div
             onMouseDown={handleMouseDown}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-2xl border rounded-sm w-7 h-14 bg-background flex items-center justify-center cursor-grab"
+            className="absolute bg-primary top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-2xl rounded-full w-12 h-12 flex items-center justify-center cursor-grab border border-secondary"
         >
             <div className="flex gap-1 flex-col">
-                <div className="w-1 h-1 bg-primary rounded-full"></div>
-                <div className="w-1 h-1 bg-primary rounded-full"></div>
-                <div className="w-1 h-1 bg-primary rounded-full"></div>
-                <div className="w-1 h-1 bg-primary rounded-full"></div>
+                {/* <div className="w-1 h-1 bg-secondary rounded-full"></div>
+                <div className="w-1 h-1 bg-secondary rounded-full"></div>
+                <div className="w-1 h-1 bg-secondary rounded-full"></div>
+                <div className="w-1 h-1 bg-secondary rounded-full"></div> */}
+
+                <ChevronsLeftRight className="w-8 h-8 text-secondary" />
             </div>
         </div>
     </div>
@@ -38,8 +41,8 @@ interface ComparisonSliderProps {
 }
 
 export const Image = ({
-    path,
     position,
+    path,
     alt,
 }: {
     position: number;
@@ -77,7 +80,6 @@ const Media = ({
             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             draggable={false}
         />
-
         <div
             className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
             style={{ clipPath: `inset(0 0 0 ${position}%)` }}
@@ -136,7 +138,7 @@ export function ComparisonSlider({
     }, [isDragging]);
 
     return (
-        <div className="relative w-full h-auto aspect-video rounded-lg shadow-2xl overflow-hidden">
+        <div className="relative w-full aspect-video overflow-hidden">
             <div
                 ref={containerRef}
                 className="relative w-full overflow-hidden bg-gray-100 select-none"

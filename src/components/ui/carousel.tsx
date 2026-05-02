@@ -79,7 +79,7 @@ export function Carousel({ children, className }: CarouselProps) {
                                 "transition-all duration-500 h-full flex flex-col items-center justify-center",
                                 index === currentIndex
                                     ? "opacity-100 scale-100"
-                                    : "opacity-40 scale-95 pointer-events-none",
+                                    : "opacity-20 scale-90 pointer-events-none",
                             )}
                         >
                             {child}

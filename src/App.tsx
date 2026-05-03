@@ -36,12 +36,10 @@ function App() {
     const { theme } = useTheme();
 
     return (
-        <div className="container space-y-8 mx-auto h-full">
-            <header className="flex items-center justify-around py-4 px-6">
+        <div className="container relative space-y-2 mx-auto h-full flex items-center justify-center">
+            <header className="absolute top-0 right-0 left-0 flex items-center justify-around py-2 px-6">
                 <img src={logo} className="w-8 h-8" />
-                {/* <h1 className="font-semibold text-3xl text-foreground">
-                    Secare
-                </h1> */}
+
                 <ThemeButton />
             </header>
 

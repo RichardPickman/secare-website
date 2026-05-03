@@ -1,5 +1,11 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Children, useEffect, useRef, useState, type ReactNode } from "react";
+import {
+    Children,
+    useLayoutEffect,
+    useRef,
+    useState,
+    type ReactNode,
+} from "react";
 import { cn } from "../../lib/utils";
 
 interface CarouselProps {
@@ -10,19 +16,19 @@ interface CarouselProps {
 export function Carousel({ children, className }: CarouselProps) {
     const [currentIndex, setIndex] = useState(0);
     const [containerWidth, setContainerWidth] = useState(0);
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const childrenArray = Children.toArray(children);
     const totalSlides = childrenArray.length;
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const updateWidth = () => {
             if (containerRef.current) {
                 setContainerWidth(containerRef.current.offsetWidth);
-            }
 
-            setWindowWidth(window.innerWidth);
+                console.log("Offset height", containerRef.current.offsetHeight);
+                console.log("Offset width", containerRef.current.offsetWidth);
+            }
         };
 
         updateWidth();
@@ -32,16 +38,7 @@ export function Carousel({ children, className }: CarouselProps) {
         return () => window.removeEventListener("resize", updateWidth);
     }, []);
 
-    const getFactor = (width: number) => {
-        if (width >= 1920) return 0.8;
-        if (width >= 1600) return 0.7;
-        if (width >= 1280) return 0.65;
-
-        return 0.85;
-    };
-
-    const factor = getFactor(windowWidth);
-    const slideWidth = containerWidth * factor;
+    const slideWidth = containerWidth * 0.7;
     const offset =
         containerWidth > 0
             ? (containerWidth - slideWidth) / 2 - currentIndex * slideWidth
@@ -66,7 +63,9 @@ export function Carousel({ children, className }: CarouselProps) {
         >
             <div
                 className="flex transition-transform duration-500 ease-out"
-                style={{ transform: `translateX(${offset}px)` }}
+                style={{
+                    transform: `translateX(${offset}px)`,
+                }}
             >
                 {childrenArray.map((child, index) => (
                     <div

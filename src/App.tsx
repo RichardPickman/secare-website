@@ -1,142 +1,82 @@
-import { useState, type ReactNode } from "react";
-import home1 from "./assets/screenshots/home-1.png";
-import home2 from "./assets/screenshots/home-2.png";
-import subscriptions1 from "./assets/screenshots/subscriptions-1.png";
-import subscriptions2 from "./assets/screenshots/subscriptions-2.png";
+import chrome from "./assets/chrome.png";
+import firefox from "./assets/firefox.png";
+import logo from "./assets/hero.png";
+import { ThemeButton } from "./components/theme-button";
 
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Button } from "./components/ui/button";
-import { Checkbox } from "./components/ui/checkbox";
+import { Carousel } from "./components/ui/carousel";
 import { ComparisonSlider } from "./components/ui/comparison-slider";
-import { Label } from "./components/ui/label";
-import { cn } from "./lib/utils";
+import { useTheme } from "./hooks/useTheme";
+import { groups } from "./lib/groups";
 
-const CheckboxGroup = ({ children }: { children: ReactNode }) => (
-    <div className="flex gap-2 items-center">
-        <Checkbox className="pointer-events-none" checked={true} />
-        <Label className="flex-1 cursor-pointer text-sm leading-relaxed text-foreground/90">
-            {children}
-        </Label>
+const DownloadSlide = () => (
+    <div className="h-full w-full flex flex-col items-center justify-center">
+        <p className="text-muted-foreground text-xl">
+            Available for <span className="font-bold">Chrome</span> and{" "}
+            <span className="font-bold">Firefox</span>
+        </p>
+        <div className="flex items-center justify-center gap-12 p-4">
+            <a
+                href="https://chromewebstore.google.com/detail/secare/dpeeaknlhljbpnompbhhiinccemlhhed"
+                target="_blank"
+            >
+                <img src={chrome} className="max-w-30" />
+            </a>
+
+            <a
+                href="https://addons.mozilla.org/en-US/firefox/addon/secare/"
+                target="_blank"
+            >
+                <img src={firefox} className="max-w-30" />
+            </a>
+        </div>
     </div>
 );
 
-const groups = [
-    {
-        title: "Home",
-        description:
-            "Sick of shorts, promotions and exploration blocks coming back, even though you hid them? Me too. This group of settings will help you to hide them for good.",
-        images: [home1, home2],
-        settings: {
-            shorts: ["Hide shorts in main feed", "Hide shorts in menu"],
-            header: [
-                "Hide menu button",
-                "Hide country selector",
-                "Hide voice search",
-                "Hide profile profile",
-            ],
-            "Main feed & video grid": [
-                "Hide most relevant block",
-                "Hide tags",
-                "Hide explore more topics",
-                "Hide premium promotion",
-            ],
-        },
-    },
-    {
-        title: "Subscriptions",
-        description:
-            "Bring back the old subscription feed, which working for you, not the algorithm.",
-        images: [subscriptions1, subscriptions2],
-        settings: {
-            shorts: ["Hide shorts in main feed", "Hide shorts in menu"],
-            header: [
-                "Hide menu button",
-                "Hide country selector",
-                "Hide voice search",
-                "Hide profile profile",
-            ],
-            "Main feed & video grid": ["Hide most relevant block"],
-        },
-    },
-];
-
 function App() {
-    const [groupIndex, setGroupIndex] = useState(0);
+    const { theme } = useTheme();
 
     return (
-        <section>
-            {groups.map((group, index) => (
-                <section
-                    className={cn(
-                        "container mx-auto p-2 transition-all duration-300 h-full",
-                        index !== groupIndex && "hidden",
-                    )}
-                    key={index}
-                >
-                    <div className="space-y-2 p-2">
-                        <h2 className="font-semibold text-2xl text-foreground">
-                            {group.title}
-                        </h2>
-                        <p className="text-muted-foreground">
-                            {group.description}
-                        </p>
-                    </div>
-                    <div className="flex flex-col gap-4 w-full lg:flex-row">
-                        <div className="flex-1">
+        <div className="container relative space-y-2 mx-auto h-full flex items-center justify-center">
+            <header className="absolute top-0 right-0 left-0 flex items-center justify-around py-2 px-6">
+                <img src={logo} className="w-8 h-8" />
+
+                <ThemeButton />
+            </header>
+
+            <Carousel>
+                {groups.map((group, index) => (
+                    <div key={group.title} className="h-full space-y-4">
+                        <div className="space-y-2">
+                            <h2 className="font-semibold text-2xl text-foreground">
+                                {group.title}
+                            </h2>
+                            <p className="text-muted-foreground">
+                                {group.description}
+                            </p>
+                        </div>
+                        <div
+                            key={index}
+                            className="flex flex-col gap-4 p-4 w-full shadow-2xl rounded-lg"
+                        >
                             <ComparisonSlider
-                                leftImage={group.images[0]}
-                                rightImage={group.images[1]}
+                                leftImage={
+                                    theme === "dark"
+                                        ? group.images.dark[0]
+                                        : group.images.light[0]
+                                }
+                                rightImage={
+                                    theme === "dark"
+                                        ? group.images.dark[1]
+                                        : group.images.light[1]
+                                }
                             />
                         </div>
-
-                        <div className="flex flex-col shadow-lg rounded-lg py-4 px-2 justify-between items-center gap-2">
-                            <div className="flex flex-row gap-2 lg:flex-col">
-                                {Object.entries(group.settings).map(
-                                    ([settingGroup, settings]) => (
-                                        <div className="space-y-2 p-2 rounded bg-background">
-                                            <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                                                {settingGroup}
-                                            </Label>
-                                            {settings.map((setting, sidx) => (
-                                                <CheckboxGroup key={sidx}>
-                                                    {setting}
-                                                </CheckboxGroup>
-                                            ))}
-                                        </div>
-                                    ),
-                                )}
-                            </div>
-                            <div className="flex gap-4 items-center">
-                                <Button
-                                    variant="outline"
-                                    size="icon"
-                                    className="cursor-pointer rounded-full"
-                                    onClick={() =>
-                                        setGroupIndex((prev) =>
-                                            prev > 0 ? prev - 1 : 0,
-                                        )
-                                    }
-                                    disabled={groupIndex <= 0}
-                                >
-                                    <ArrowLeft className="w-8 h-8" />
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    size="icon"
-                                    className="cursor-pointer rounded-full"
-                                    onClick={() =>
-                                        setGroupIndex((prev) => prev + 1)
-                                    }
-                                    disabled={groupIndex >= groups.length - 1}
-                                >
-                                    <ArrowRight className="w-8 h-8" />
-                                </Button>
-                            </div>
-                        </div>
                     </div>
-                </section>
-            ))}
-        </section>
+                ))}
+
+                <DownloadSlide />
+            </Carousel>
+        </div>
     );
 }
 

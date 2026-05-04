@@ -16,33 +16,50 @@ interface CarouselProps {
 export function Carousel({ children, className }: CarouselProps) {
     const [currentIndex, setIndex] = useState(0);
     const [containerWidth, setContainerWidth] = useState(0);
+    const [factor, setFactor] = useState(0.7);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const childrenArray = Children.toArray(children);
     const totalSlides = childrenArray.length;
 
     useLayoutEffect(() => {
-        const updateWidth = () => {
-            if (containerRef.current) {
-                setContainerWidth(containerRef.current.offsetWidth);
+        const handleFactor = () => {
+            const height = window.innerHeight;
+            if (height > 700) {
+                setFactor(0.55);
+            }
 
-                console.log("Offset height", containerRef.current.offsetHeight);
-                console.log("Offset width", containerRef.current.offsetWidth);
+            if (height > 800) {
+                setFactor(0.7);
+            }
+
+            if (height > 900) {
+                setFactor(0.8);
             }
         };
 
-        updateWidth();
+        const updateWidth = () => {
+            if (containerRef.current) {
+                setContainerWidth(containerRef.current.offsetWidth);
+            }
+        };
 
-        window.addEventListener("resize", updateWidth);
+        const handleDimensionProperties = () => {
+            updateWidth();
+            handleFactor();
+        };
 
-        return () => window.removeEventListener("resize", updateWidth);
+        handleDimensionProperties();
+
+        window.addEventListener("resize", handleDimensionProperties);
+
+        return () =>
+            window.removeEventListener("resize", handleDimensionProperties);
     }, []);
 
-    const slideWidth = containerWidth * 0.7;
+    const slideWidth = containerWidth * factor;
     const offset =
-        containerWidth > 0
-            ? (containerWidth - slideWidth) / 2 - currentIndex * slideWidth
-            : 0;
+        (containerWidth - slideWidth) / 2 - currentIndex * slideWidth;
 
     const goLeft = () => {
         if (currentIndex > 0) {

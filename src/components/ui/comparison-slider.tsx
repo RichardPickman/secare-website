@@ -22,11 +22,6 @@ const SliderHandle = ({
             className="absolute bg-primary top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-2xl rounded-full w-12 h-12 flex items-center justify-center cursor-grab border border-secondary"
         >
             <div className="flex gap-1 flex-col">
-                {/* <div className="w-1 h-1 bg-secondary rounded-full"></div>
-                <div className="w-1 h-1 bg-secondary rounded-full"></div>
-                <div className="w-1 h-1 bg-secondary rounded-full"></div>
-                <div className="w-1 h-1 bg-secondary rounded-full"></div> */}
-
                 <ChevronsLeftRight className="w-8 h-8 text-secondary" />
             </div>
         </div>
@@ -36,42 +31,26 @@ const SliderHandle = ({
 interface ComparisonSliderProps {
     leftImage: string;
     rightImage: string;
+    loading: "eager" | "lazy";
+    fetchPriority: "high" | "auto";
     alt?: string;
     height?: string;
 }
-
-export const Image = ({
-    position,
-    path,
-    alt,
-}: {
-    position: number;
-    path: string;
-    alt: string;
-}) => (
-    <div
-        className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
-        style={{ clipPath: `inset(0 0 0 ${position}%)` }}
-    >
-        <img
-            src={path}
-            alt={`${alt} - Right`}
-            className="absolute inset-0 w-full h-full object-cover"
-            draggable={false}
-        />
-    </div>
-);
 
 const Media = ({
     leftImage,
     alt,
     position,
+    loading,
+    fetchPriority,
     rightImage,
 }: {
     leftImage: string;
     rightImage: string;
     position: number;
     alt: string;
+    loading: "eager" | "lazy";
+    fetchPriority: "high" | "auto";
 }) => (
     <>
         <img
@@ -79,6 +58,8 @@ const Media = ({
             alt={`${alt} - Left`}
             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             draggable={false}
+            loading={loading ?? "lazy"}
+            fetchPriority={fetchPriority ?? "auto"}
         />
         <div
             className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
@@ -89,6 +70,8 @@ const Media = ({
                 alt={`${alt} - Right`}
                 className="absolute inset-0 w-full h-full object-cover"
                 draggable={false}
+                loading={loading ?? "lazy"}
+                fetchPriority={fetchPriority ?? "auto"}
             />
         </div>
     </>
@@ -98,6 +81,8 @@ export function ComparisonSlider({
     leftImage,
     rightImage,
     alt = "Comparison",
+    loading,
+    fetchPriority,
 }: ComparisonSliderProps) {
     const [position, setPosition] = useState(66); // 0-100%
     const [isDragging, setIsDragging] = useState(false);
@@ -149,6 +134,8 @@ export function ComparisonSlider({
                     rightImage={rightImage}
                     alt={alt}
                     position={position}
+                    loading={loading}
+                    fetchPriority={fetchPriority}
                 />
 
                 <SliderHandle

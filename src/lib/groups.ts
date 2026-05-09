@@ -1,20 +1,20 @@
-import homeLight1 from "../assets/screenshots/home-light-1.png";
-import homeLight2 from "../assets/screenshots/home-light-2.png";
+import homeLight1 from "../assets/screenshots/home-light-1.webp";
+import homeLight2 from "../assets/screenshots/home-light-2.webp";
 
-import homeDark1 from "../assets/screenshots/home-dark-1.png";
-import homeDark2 from "../assets/screenshots/home-dark-2.png";
+import homeDark1 from "../assets/screenshots/home-dark-1.webp";
+import homeDark2 from "../assets/screenshots/home-dark-2.webp";
 
-import subscriptionsLight1 from "../assets/screenshots/subscriptions-light-1.png";
-import subscriptionsLight2 from "../assets/screenshots/subscriptions-light-2.png";
+import subscriptionsLight1 from "../assets/screenshots/subscriptions-light-1.webp";
+import subscriptionsLight2 from "../assets/screenshots/subscriptions-light-2.webp";
 
-import subscriptionsDark1 from "../assets/screenshots/subscriptions-dark-1.png";
-import subscriptionsDark2 from "../assets/screenshots/subscriptions-dark-2.png";
+import subscriptionsDark1 from "../assets/screenshots/subscriptions-dark-1.webp";
+import subscriptionsDark2 from "../assets/screenshots/subscriptions-dark-2.webp";
 
-import watchLight1 from "../assets/screenshots/watching-light-1.png";
-import watchLight2 from "../assets/screenshots/watching-light-2.png";
+import watchLight1 from "../assets/screenshots/watching-light-1.webp";
+import watchLight2 from "../assets/screenshots/watching-light-2.webp";
 
-import watchDark1 from "../assets/screenshots/watching-dark-1.png";
-import watchDark2 from "../assets/screenshots/watching-dark-2.png";
+import watchDark1 from "../assets/screenshots/watching-dark-1.webp";
+import watchDark2 from "../assets/screenshots/watching-dark-2.webp";
 
 export const groups = [
     {

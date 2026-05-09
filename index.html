@@ -4,11 +4,44 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Secare — Clean up YouTube. Your way.</title>
         <meta
             name="description"
-            content="Secare is a browser extension that cleans up YouTube by removing Shorts, tags, recommendations, header clutter, and more. Customize Home, Subscriptions, and Watching pages for a distraction‑free viewing experience. Available for Chrome and Firefox."
+            content="Secare is a browser extension that cleans up YouTube by removing Shorts, tags, recommendations, and clutter. Customize Home, Subscriptions, and Watching pages. Available for Chrome and Firefox."
         />
-        <title>secare-website</title>
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Secare — Clean up YouTube. Your way." />
+        <meta property="og:description" content="Hide Shorts, tags, recommendations, and clutter. Your YouTube, your rules." />
+        <meta property="og:url" content="https://secare-website.vercel.app" />
+        <meta property="og:image" content="https://secare-website.vercel.app/icons.svg" />
+        <meta property="og:type" content="website" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Secare — Clean up YouTube. Your way." />
+        <meta name="twitter:description" content="Hide Shorts, tags, recommendations, and clutter. Your YouTube, your rules." />
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://secare-website.vercel.app" />
+
+        <!-- Preconnect for fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Structured Data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Secare",
+            "description": "Hide Shorts, tags, recommendations, and clutter on YouTube.",
+            "url": "https://secare-website.vercel.app",
+            "applicationCategory": "BrowserExtension",
+            "operatingSystem": "Chrome, Firefox",
+            "browserRequirements": "Requires Chrome or Firefox"
+        }
+        </script>
     </head>
     <body>
         <div id="root"></div>

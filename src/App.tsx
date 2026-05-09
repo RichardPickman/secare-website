@@ -1,6 +1,6 @@
-import chrome from "./assets/chrome.png";
-import firefox from "./assets/firefox.png";
-import logo from "./assets/hero.png";
+import chrome from "./assets/chrome.webp";
+import firefox from "./assets/firefox.webp";
+import logo from "./assets/hero.webp";
 import { ThemeButton } from "./components/theme-button";
 import {
     Carousel,

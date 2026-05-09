@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://secare-website.vercel.app/sitemap.xml
